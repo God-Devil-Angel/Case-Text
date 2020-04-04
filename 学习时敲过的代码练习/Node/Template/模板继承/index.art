@@ -1,0 +1,5 @@
+{{extend './a.art'}}
+
+{{block 'conent'}}
+{{msg}}
+{{/block}}

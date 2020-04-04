@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //1.创建ajax对象
+        var xhr = new XMLHttpRequest();
+        //2.告诉ajax请求方式和请求地址
+        xhr.open('get', ' http://uxwjzm.natappfree.cc/reponseText');
+        //3.发送
+        xhr.send();
+        //接收服务器响应的内容
+        xhr.onload = function() {
+            // console.log(JSON.parse(xhr.responseText));
+            var resp = JSON.parse(xhr.responseText);
+            var H1 = '<h1>aa' + resp.name + '/<h1>';
+            document.body.innerHTML = H1;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>德玛西亚</h1>
+</body>
+
+</html>

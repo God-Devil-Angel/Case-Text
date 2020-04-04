@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .load {
+            width: 80%;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+        
+        .progress {
+            width: 0;
+            background-color: skyblue;
+            text-align: right;
+        }
+        
+        .img img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id='form'>
+        <input type="text" name='User'>
+        <input type="password" name='pwd'>
+        <input type="button" value='提交' id='sub'><br>
+        <label for="file">上传文件</label><input type="file" id='file'>
+        <div class="load">
+            <div class="img">
+
+            </div>
+            <div class="progress">0%</div>
+        </div>
+    </form>
+    <script>
+        var sub = document.getElementById('sub');
+        var form = document.getElementById('form');
+        var file = document.getElementById('file');
+        var pg = document.getElementsByClassName('progress');
+        var im = document.getElementsByClassName('img');
+        console.log(pg[0]);
+        file.onchange = function() {
+            var formData = new FormData();
+            formData.append('attrName', this.files[0]);
+
+            //创建ajax
+            var xhr = new XMLHttpRequest();
+            //配置ajax
+            xhr.open('post', 'http://localhost/files');
+            //文件上传进度
+            xhr.upload.onprogress = function(ev) {
+                    var result = (ev.loaded / ev.total) * 100 + '%';
+                    pg[0].style.width = result;
+                    pg[0].innerHTML = result;
+                }
+                //发送
+            xhr.send(formData);
+            xhr.onload = function() {
+                var pathObject = JSON.parse(xhr.responseText);
+                console.log(pathObject);
+                //动态创建img标签
+                var img = document.createElement('img');
+                //设置imgsrc
+                img.src = pathObject.path;
+                im[0].appendChild(img);
+            }
+        }
+        sub.onclick = function() {
+
+            //创建FormData对象
+            var formData = new FormData(form);
+            console.log(formData.get('User'));
+
+            //创建ajax对象
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://localhost/formData');
+            xhr.send(formData);
+            xhr.onload = function() {
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>

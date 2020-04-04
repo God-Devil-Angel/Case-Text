@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="box">
+        <div v-bind:style='{backgroundColor: bgcStyle,border: borStyle,width: widStyle,height: heiStyle}'>1</div>
+        <div v-bind:style='objStyle'>2</div>
+        <div v-bind:style='[objStyle,araStyle]'>3</div>
+        <button v-on:click='handle1'>切换</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                bgcStyle: 'skyblue',
+                borStyle: '2px solid orange',
+                widStyle: '100px',
+                heiStyle: '',
+                objStyle: {
+                    border: '1px solid #666',
+                    width: '100px',
+                    height: '200px'
+                },
+                araStyle: {
+                    height: '300px'
+                }
+
+            },
+            methods: {
+                handle1: function() {
+                    this.heiStyle = '200px'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+    <style>
+        .current {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <alert-box :list='list'>
+            <template slot-scope='a'>
+                <strong v-if='a.inf.id==2' class='current'>{{a.inf.name}}</strong>
+                <strong v-else>{{a.inf.name}}</strong>
+            </template>
+        </alert-box>
+    </div>
+    <script>
+        Vue.component('alert-box', {
+            props: ['list'],
+            template: `
+                <div>
+                    <ul>
+                        <li :key="item.id" v-for="item in list">
+                        <slot :inf='item'></slot></li>
+                    </ul>
+                </div>
+                `
+        })
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                list: [{
+                    id: 1,
+                    name: '苹果'
+                }, {
+                    id: 2,
+                    name: '橘子'
+                }, {
+                    id: 3,
+                    name: '香蕉'
+                }]
+            }
+        })
+    </script>
+
+</body>
+
+</html>

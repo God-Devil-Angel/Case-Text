@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        var rand = getRandom(1, 50);
+
+        var count = 1;
+        while (true) {
+            var a = prompt('请猜猜数字');
+            if (a > rand) {
+                alert('您猜大了');
+            } else if (a < rand) {
+                alert('您猜小了');
+            } else {
+                alert('恭喜您，您猜对了');
+                break;
+            }
+            if (count == 10) {
+                alert('您猜错10次，程序退出');
+                break;
+            }
+            count++;
+        }
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

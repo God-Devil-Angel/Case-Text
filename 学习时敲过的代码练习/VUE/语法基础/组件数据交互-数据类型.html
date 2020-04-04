@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="box">
+        <menu-item pstr='nihao' :pstr='pstr' :pnum='pnum' :pbool='pBool' :parr='pArr' :pobj='pobj'></menu-item>
+
+    </div>
+    <script>
+        Vue.component('menu-item', {
+            props: ['pstr', 'pnum', 'pbool', 'parr', 'pobj'],
+            template: `
+            <div>
+                <div>{{pstr}}</div>
+                <div>{{pnum}}</div>
+                <div>{{pbool}}</div>
+                <ul>
+                <li v-bind:key='index' v-for='(item,index) in parr'>{{item}}</li>
+                </ul>
+                <div>
+                    <span>{{pobj.name}}</span>
+                   <span>{{pobj.age}}</span>
+                    
+                </div>
+                
+            </div>
+            `
+        })
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                pstr: '科学',
+                pnum: 123,
+                pBool: true,
+                pArr: ['哈哈', '嘿嘿', '吼吼'],
+                pobj: {
+                    name: 'mkk',
+                    age: 66
+                }
+            },
+            methods: {
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+"use strict";var a=100,b=200,c=function(){console.log("hahh")};

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+        
+        .map {
+            position: relative;
+            width: 747px;
+            height: 617px;
+            margin: 150px auto;
+        }
+        
+        .city {
+            position: absolute;
+            top: 227px;
+            right: 191px;
+            width: 8px;
+            height: 8px;
+        }
+        
+        .city1 {
+            position: absolute;
+            top: 527px;
+            right: 172px;
+        }
+        
+        .city2 {
+            position: absolute;
+            top: 502px;
+            right: 85px;
+        }
+        
+        .purple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00a4f5;
+        }
+        
+        div[class*="poin"] {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px #00a4f5;
+            animation: point 1.2s linear infinite;
+        }
+        
+        .poin2 {
+            animation-delay: 0.4s !important;
+        }
+        
+        .poin3 {
+            animation-delay: 0.8s !important;
+        }
+        
+        @keyframes point {
+            0% {}
+            70% {
+                width: 40px;
+                height: 40px;
+                opacity: 1;
+            }
+            100% {
+                width: 70px;
+                height: 70px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="map">
+        <img src="img/map.png" alt="">
+        <div class="city">
+
+            <div class="purple"> </div>
+            <div class="poin1"></div>
+            <div class="poin2"></div>
+            <div class="poin3"></div>
+        </div>
+        <div class="city1">
+
+            <div class="purple"> </div>
+            <div class="poin1"></div>
+            <div class="poin2"></div>
+            <div class="poin3"></div>
+        </div>
+        <div class="city2">
+
+            <div class="purple"> </div>
+            <div class="poin1"></div>
+            <div class="poin2"></div>
+            <div class="poin3"></div>
+        </div>
+    </div>
+</body>
+
+</html>

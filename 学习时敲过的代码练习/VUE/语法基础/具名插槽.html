@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="box">
+        <alert-box>
+            <!-- <h1 slot='header'>哈哈</h1>
+            <h2 slot='header'>嘿嘿</h2>
+            <p>吾乃常山赵子龙那个</p>
+            <h3 slot='footer'>123</h3>
+            <h4 slot='footer'>456</h4> -->
+
+            <template slot='footer'>
+                <h5>风景</h5>
+                <h4>爱情</h4>
+            </template>
+            <p>一生</p>
+            <template slot='header'>
+                <h5>温情</h5>
+                <h4>感受</h4>
+            </template>
+        </alert-box>
+    </div>
+    <script>
+        Vue.component('alert-box', {
+            template: `
+                <div>
+                <header>
+                    <slot name='header'></slot>
+                <hearder>
+                <main>
+                    <slot><slot>
+                </main>
+                <footer>
+                    <slot name='footer'></slot>
+                </footer>
+                </div>
+                `
+        })
+        var vm = new Vue({
+            el: '.box',
+            data: {
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

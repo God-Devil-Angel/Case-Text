@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="box">
+        <alert-box>456</alert-box>
+    </div>
+    <script>
+        var alertBox = {
+            template: `
+            <div>
+                <slot></slot>
+            </div>
+            `
+        }
+        var vm = new Vue({
+            el: '.box',
+            data: {
+
+            },
+            components: {
+                'alert-box': alertBox
+            }
+        })
+    </script>
+</body>
+
+</html>

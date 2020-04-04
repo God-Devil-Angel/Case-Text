@@ -1,0 +1,34 @@
+li {
+    list-style: none
+}
+
+::placeholder {
+    padding-left: 8px;
+    color: skyblue;
+    font-weight: 700;
+}
+
+#app {
+    width: 600px;
+    border: 1px solid skyblue;
+    margin: 55px auto;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#app li {
+    width: 500px;
+    border: 1px solid red;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+#app li a {
+    float: right;
+    margin-right: 5px
+}
+
+#app span {
+    margin: 0 5px;
+}

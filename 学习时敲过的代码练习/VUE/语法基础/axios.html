@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/axios.js'></script>
+</head>
+
+<body>
+    <script>
+        // axios.get('http://localhost:3000/adata').then(ret => console.log(ret.data));
+        // axios.get('http://localhost:3000/adata1/?id=123').then(ret => console.log(ret.data));
+        // axios.get('http://localhost:3000/adata1/?id=123').then(ret => console.log(ret.data));
+        // axios.post('http://localhost:3000/ddaa', {
+        //     id: 123,
+        //     name: '张三'
+        // }).then(ret => console.log(ret.data));
+        axios.defaults.baseURL = 'http://localhost:3000';
+        const params = new URLSearchParams();
+        params.append('name', 'zhangsan');
+        params.append('age', '100');
+        axios.post('/aadd', params).then(ret => console.log(ret.data));
+    </script>
+</body>
+
+</html>

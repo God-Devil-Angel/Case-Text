@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function deleteArr(arr) {
+            var arr1 = new Array();
+            for (var i = 0; i <= arr.length - 1; i++) {
+                if (arr1.indexOf(arr[i]) === -1) {
+                    arr1.push(arr[i]);
+                }
+            }
+            return arr1;
+        }
+
+
+        console.log(deleteArr(['aa', 'bb', 'aa', 'cc']));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

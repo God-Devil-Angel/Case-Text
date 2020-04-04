@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.father{
+    
+    height: 800px;
+    width: 800px;
+    background: orange;
+}
+.aoe {
+    float: right;
+    width:500px;
+    height: 500px;
+    margin-top: 50px;
+    background:red;
+}
+.son {
+    margin-top: 50px;
+    width: 200px;
+    height:200px;
+    background: blue;
+}

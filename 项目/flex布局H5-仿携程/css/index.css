@@ -1,0 +1,253 @@
+body {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.search-index {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2px;
+    max-width: 540px;
+    min-width: 320px;
+    width: 100%;
+    height: 44px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.search {
+    position: relative;
+    flex: 1;
+    height: 26px;
+    line-height: 24px;
+    padding-left: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #666;
+    margin: 6px 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .3)
+}
+
+.search::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 15px;
+    width: 15px;
+    background: url(../images/sprite.png) no-repeat -59px -279px;
+    background-size: 104px auto;
+    margin-left: 5px;
+}
+
+.user {
+    overflow: hidden;
+    position: relative;
+    height: 44px;
+    width: 44px;
+    text-align: center;
+    color: #2eaae0;
+}
+
+.user::before {
+    content: "";
+    display: block;
+    height: 23px;
+    width: 23px;
+    background: url(../images/sprite.png) no-repeat -59px -194px;
+    background-size: 104px auto;
+    margin: 0 auto -2px;
+}
+
+.focus {
+    padding-top: 44px;
+}
+
+.focus img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.local-nav {
+    display: flex;
+    height: 64px;
+    margin: 3px 4px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.local-nav li {
+    flex: 1;
+}
+
+.local-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.local-nav-icon {
+    height: 32px;
+    width: 32px;
+    background: url(../images/localnav_bg.png) no-repeat 0 0;
+    background-size: 32px auto;
+    margin-top: 8px;
+}
+
+nav {
+    border-radius: 8px;
+    margin: 0 4px 3px;
+}
+
+nav .nav-common {
+    display: flex;
+    height: 80px;
+    background: red;
+}
+
+.nav-items:nth-child(-n+2) {
+    border-right: 1px solid #fff;
+}
+
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.nav-common:nth-child(2) {
+    margin: 3px 0;
+}
+
+.nav-items a {
+    flex: 1;
+    font-size: 14px;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px rgb(0, 0, 0, .2);
+}
+
+.nav-items a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+
+.nav-common .nav-items:nth-child(1) a {
+    background: url(../images/hotel.png) no-repeat bottom center;
+    background-size: 121px auto;
+    border: none;
+}
+
+.nav-common:nth-child(1) {
+    background: -webkit-linear-gradient(left, pink, orange);
+}
+
+.subnav-entry {
+    display: flex;
+    margin: 0 4px;
+    flex-flow: row wrap;
+}
+
+.subnav-entry li {
+    flex: 20%;
+}
+
+.subnav-entry li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subnav-entry-icon {
+    height: 28px;
+    width: 28px;
+    background: url(../images/subnav-bg.png) no-repeat;
+    margin-top: 8px;
+    background-size: 28px auto;
+}
+
+.sales-box {
+    border-top: 1px solid #ccc;
+    margin: 4px;
+}
+
+.sales-hd {
+    position: relative;
+    height: 44px;
+    background: #ccc;
+}
+
+.sales-hd h2 {
+    position: relative;
+    overflow: hidden;
+    text-indent: -999px
+}
+
+.sales-hd h2::after {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    content: "";
+    width: 79px;
+    height: 20px;
+    background: url(../images/hot.png) no-repeat 0 -18px;
+    background-size: 75px auto;
+}
+
+.more {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    background: -webkit-linear-gradient(left, #ff506c, #ff6bc6);
+    border-radius: 8px;
+    color: #fff;
+    padding: 3px 20px 3px 10px;
+}
+
+.more::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg)
+}
+
+.row {
+    display: flex;
+}
+
+.row a {
+    flex: 1;
+}
+
+.row a img {
+    width: 100%;
+}

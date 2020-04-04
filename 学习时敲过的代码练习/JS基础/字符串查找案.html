@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var count = 0;
+        var color = ['red', 'blue', 'red', 'green', 'pink', 'red'];
+
+        function look(str, word) {
+            var dir = [];
+            index = str.indexOf(word);
+            while (index != -1) {
+                dir.push(index);
+                count++;
+                index = str.indexOf(word, index + 1);
+
+            }
+            return dir.join(',');
+        }
+
+        console.log(look(color, 'red'));
+        console.log('总共' + count + '个');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

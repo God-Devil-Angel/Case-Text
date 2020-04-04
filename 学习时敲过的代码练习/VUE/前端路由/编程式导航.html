@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../JS/vue.js'></script>
+    <script src='../JS/vue-router_3.0.2.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to='/user/1'>用户1</router-link>
+        <router-link to='/user/2'>用户2</router-link>
+        <router-link to='/user/3'>用户3</router-link>
+        <router-link to='/resgit'>登录</router-link>
+
+        <!-- //路由占位符 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        var User = {
+            props: ['uname', 'age'],
+            template: `<div>
+                <h1>id:{{$route.params.id}}age:{{age}}uname:{{uname}}</h1>
+                <button v-on:click='tiao'>跳转</button>
+                </div>`,
+            methods: {
+                tiao: function() {
+                    this.$router.push('/resgit')
+                }
+            }
+        }
+        var resgit = {
+            template: `<div>
+                <h1>这是啥我也不知道</h1>
+                <button v-on:click='tui'>后退</button>
+                </div>`,
+            methods: {
+                tui: function() {
+                    this.$router.go(-1);
+                }
+            }
+        }
+        var rt = new VueRouter({
+            //路由规则数组
+            routes: [{
+                path: '/user/:id',
+                component: User,
+                props: {
+                    uname: 'zs',
+                    age: 22
+                }
+            }, {
+                path: '/resgit',
+                component: resgit
+            }]
+        })
+        var vm = new Vue({
+            el: '#app',
+            router: rt
+        })
+    </script>
+</body>
+
+</html>

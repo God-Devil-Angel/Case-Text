@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function promiseData(url) {
+            var p = new Promise(function(reslove, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState != 4) return;
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        reslove(xhr.responseText);
+                    } else {
+                        reject('服务器错误');
+                    }
+                }
+                xhr.open('get', url);
+                xhr.send();
+            })
+            return p;
+        }
+
+        var p1 = promiseData('http://localhost:3000/data')
+        var p2 = promiseData('http://localhost:3000/data1')
+        var p3 = promiseData('http://localhost:3000/data2')
+        Promise.all([p1, p2, p3]).then(result => console.log(result));
+        Promise.race([p1, p2, p3]).then(result => console.log(result));
+    </script>
+</body>
+
+</html>

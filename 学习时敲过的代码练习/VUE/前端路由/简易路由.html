@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .app {
+            width: 500px;
+            border: 1px solid #ccc;
+            margin: 50px auto 0;
+        }
+        
+        .hearder {
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .hearder a {
+            float: left;
+            margin: 0 auto;
+            color: black;
+            width: 123px;
+            border: 1px solid skyblue;
+            text-decoration: none;
+        }
+        
+        .hearder .current {
+            border-bottom: none;
+            color: red;
+        }
+        
+        .bod {
+            width: 498px;
+            height: 150px;
+            border: 1px solid purple;
+            border-top: none;
+        }
+    </style>
+    <script src='../JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="app">
+        <div class="hearder">
+
+            <a href='#/wode' :class="{current: isCurrent[0]}" v-on:click='t1'>我的</a>
+            <a href='#/nide' :class="{current: isCurrent[1]}" v-on:click='t2'>你的</a>
+            <a href='#/tade' :class="{current: isCurrent[2]}" v-on:click='t3'>他的</a>
+            <a href='#/aide' :class="{current: isCurrent[3]}" v-on:click='t4'>爱的</a>
+
+        </div>
+        <div class="bod">
+            <component :is="istem"></component>
+        </div>
+    </div>
+    <script>
+        var wode = {
+            template: `<h1>我的，啊</h1>`
+        }
+        var nide = {
+            template: `<h1>你的，啊</h1>`
+        }
+        var tade = {
+            template: `<h1>他的，啊</h1>`
+        }
+        var aide = {
+            template: `<h1>爱的，啊</h1>`
+        }
+        var vm = new Vue({
+            el: '.app',
+            data: {
+                isCurrent: [true, false, false, false],
+                istem: 'wode'
+
+            },
+            methods: {
+                pt: function() {
+                    for (var i = 0; i < this.isCurrent.length; i++) {
+
+                        Vue.set(this.isCurrent, i, false);
+                    }
+                },
+                t1: function() {
+
+                    this.pt();
+                    this.isCurrent[0] = true;
+                },
+                t2: function() {
+
+                    this.pt();
+
+                    this.isCurrent[1] = true;
+                },
+                t3: function() {
+
+                    this.pt();
+                    this.isCurrent[2] = true;
+                },
+                t4: function() {
+                    this.pt();
+                    this.isCurrent[3] = true;
+                }
+            },
+            components: {
+                wode,
+                nide,
+                tade,
+                aide
+
+            }
+        })
+        window.onhashchange = function() {
+            vm.istem = location.hash.slice(2);
+
+
+        }
+    </script>
+</body>
+
+</html>

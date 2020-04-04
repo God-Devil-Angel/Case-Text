@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function aa() {
+            var max = arguments[0];
+            for (var i = 0; i <= arguments.length - 1; i++) {
+                if (max < arguments[i]) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+
+        alert(aa(1, 2, 3, 4, 5, 65, 32, 12, 1232131, 2313213, 435235342562352))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

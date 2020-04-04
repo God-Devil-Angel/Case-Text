@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background: url(img/bg.gif) repeat;
+        }
+        
+        .box {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #97CBFF;
+            width: 300px;
+            padding: 55px;
+            color: white;
+        }
+        
+        .itxt,
+        .pwd {
+            display: block;
+            width: 200px;
+            height: 25px;
+            margin: 15px auto;
+            padding: 5px;
+            border: 1px solid #4DFFFF;
+            color: white;
+            background: #00000030;
+            outline: none;
+            border-radius: 10px;
+            transition: all 0.8s;
+        }
+        
+        .log {
+            display: block;
+            width: 75px;
+            height: 35px;
+            margin: auto;
+            background: #00000030;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            border: 1px solid #4DFFFF;
+            border-radius: 15px;
+            transition: all 0.5s;
+            outline: none;
+        }
+        
+        .itxt:focus,
+        .pwd:focus {
+            width: 286px;
+            border: 1px solid #FF8000;
+        }
+        
+        .log:hover {
+            color: #FF8000;
+            width: 80px;
+            border: 1px solid #FF8000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="01">User</label><input type="text" class='itxt' id="01">
+        <label for="02">Password</label> <input type="password" class='pwd' id="02">
+        <input type="submit" value="login" class='log'>
+
+
+    </div>
+
+</body>
+
+</html>

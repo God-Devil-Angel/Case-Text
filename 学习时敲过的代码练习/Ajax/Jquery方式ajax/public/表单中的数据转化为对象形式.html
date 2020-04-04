@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/jQuery.js'></script>
+</head>
+
+<body>
+    <form id='form'>
+        <input type="text" name='User'>
+        <input type="password" name='pwd'>
+        <input type="submit" class='sub'>
+    </form>
+    <script>
+        var parmas = '';
+        $('#form').on('submit', function() {
+            // $(this).children('.sub').css('backgroundColor', 'blue');
+            // parmas = $(this).serialize();
+            var parmas = serializeObject($(this));
+            console.log(parmas);
+            return false;
+        })
+
+        //使用serializeArray封装input表单中方法
+        function serializeObject(obj) {
+            var parobj = {};
+            var form = obj.serializeArray();
+            $.each(form, function(index, value) {
+                parobj[value.name] = value.value;
+
+            })
+            return parobj;
+        }
+    </script>
+</body>
+
+</html>

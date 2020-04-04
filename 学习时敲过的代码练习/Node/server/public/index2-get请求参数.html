@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script>
+        window.onload = function() {
+            var username = document.querySelector('#name');
+            var pwd = document.querySelector('#password');
+            var sub = document.querySelector('#submit');
+            sub.onclick = function() {
+                //获取input表单里面的value值
+                var name = username.value;
+                var password = pwd.value;
+                //拼接参数字符串
+                var parmas = 'Username=' + name + '&' + 'Password=' + password;
+
+
+                //创建ajax对象
+                var xhr = new XMLHttpRequest();
+                //绑定请求
+                xhr.open('get', 'http://localhost:3000/second/?' + parmas);
+                //发送给服务器
+                xhr.send();
+                //接受服务器响应的内容
+                xhr.onload = function() {
+                    console.log(xhr.responseText);
+                }
+            }
+
+        }
+    </script>
+</head>
+
+
+<body>
+    <input type="text" id='name'>
+    <input type="text" id='password'>
+    <input type="submit" id='submit'>
+</body>
+
+</html>

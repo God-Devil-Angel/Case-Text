@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	 <!--标准语法-->
+	<!--  {{name}}
+	 {{conent}}
+	 {{@conent}}
+	 原始语法
+	<%=name%>
+	<%=conent%>
+	<%-concent%> -->
+
+
+	<!-- 标准语法 -->
+	{{if age>10}}
+	年龄大于10
+	{{else if age>5}}
+	年龄大于5
+	{{/if}}
+	<!--原始语法 -->
+	<%if(age>10){%>年龄大于10<%}else if(age>5){%>年龄大于5<%}%>
+
+
+</body>
+</html>	

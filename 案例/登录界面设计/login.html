@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background: url(img/1.jpg) no-repeat;
+            background-size: 100% auto;
+        }
+        
+        .login {
+            width: 700px;
+            margin: 200px auto;
+            padding: 50px;
+            background: #00000080;
+        }
+        
+        .logo {
+            text-align: center;
+            color: skyblue;
+            font-size: 35px;
+            font-weight: 700;
+            text-shadow: 1px 2px 2px blue;
+        }
+        
+        .inp {
+            margin-top: 50px;
+            text-align: center;
+            color: skyblue;
+            font-size: 20px;
+        }
+        
+        .inp input {
+            display: inline-block;
+            width: 350px;
+            height: 35px;
+            margin-top: 25px;
+            padding-left: 10px;
+            background: #00000080;
+            border: none;
+            border-bottom: 2px solid #fff;
+            outline: none;
+            color: #fff;
+        }
+        
+        .btn {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .btn button {
+            width: 150px;
+            height: 40px;
+            background: -webkit-linear-gradient(left, red, blue);
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <div class="logo">login</div>
+        <div class="inp">
+            <label for="zh">账号</label> <input type="text" id='zh' placeholder='请输入账号'><br>
+            <label for="mm">密码</label> <input type="password" id='mm' placeholder='请输入密码'>
+        </div>
+        <div class="btn">
+            <button>登录</button>
+        </div>
+
+    </div>
+</body>
+
+</html>

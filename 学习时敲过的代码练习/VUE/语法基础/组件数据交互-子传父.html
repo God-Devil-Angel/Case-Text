@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="box">
+        <div v-bind:style='{fontSize: fontSize+"px"}'>{{father}}</div>
+
+        <menu-item :parr='parr' v-on:enlart='handle($event)'></menu-item>
+
+    </div>
+    <script>
+        Vue.component('menu-item', {
+            props: ['parr'],
+            template: `
+                <div>
+                <ul>
+                    <li v-bind:key='index' v-for='(item,index) in parr'>{{item}}</li>
+                </ul>
+                <button v-on:click="parr.push('m4a1')">添加</button>
+                <button v-on:click='$emit("enlart")'>扩大父元素字体</button>
+                <button v-on:click='$emit("enlart",2)'>扩大父元素字体2</button>
+                </div>
+            `
+        })
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                father: '父元素内容',
+                father2: '父元素内容',
+                parr: ['orange', 'apple', 'ak47'],
+                fontSize: 15
+            },
+            methods: {
+
+                // handle: function() {
+                //     this.fontSize += 0.5;
+                // },
+                handle: function(val) {
+                    this.fontSize += val;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

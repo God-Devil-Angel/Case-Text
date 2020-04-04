@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src='./JS/vue.js'></script>
+    <script src='./JS/axios.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <label for="inp"><span>Id</span><input type="text" id='inp0' v-model='itemId' @input='dis' placeholder='必须输入id'></label>
+        <label for="inp"><span>Name</span><input type="text" id='inp1' v-model='itemName'></label>
+        <button @click='add' :disabled='flag'>添加</button>
+        <button @click='del'>删除数据</button>
+
+        <my-item :list=' list' @dde='delq($event)'></my-item>
+    </div>
+
+
+
+    <script>
+        var head = {
+            props: ['list'],
+            template: `
+            <ul>
+                <li v-for='item in list'><span>编号:</span>{{item.ID}}<span>名称:</span>{{item.NAME}}<a @click='$emit("dde",item.ID)'>删除</a></li>
+            </ul>
+            `
+        }
+        var vm = new Vue({
+            el: '#app ',
+            data: {
+                list: [],
+                itemId: '',
+                itemName: '',
+                flag: false
+
+            },
+            methods: {
+                a() {
+                    console.log(this.list)
+
+                },
+                get() {
+                    axios.get(' http://uxwjzm.natappfree.cc/db').then(result => {
+                        console.log(result.data)
+                        vm.list = result.data;
+                    })
+                },
+                add() {
+                    const params = new URLSearchParams();
+                    params.append('Id', this.itemId);
+                    params.append('Name', this.itemName)
+                    axios.post(' http://uxwjzm.natappfree.cc/add', params).then(result => console.log(result))
+                    this.itemId = ''
+                    this.itemName = ''
+                    this.dis()
+                    this.get()
+                },
+                dis() {
+                    if (this.itemId == '') {
+                        this.flag = true
+                    } else {
+                        this.flag = false
+                    }
+                },
+                del() {
+                    axios.delete(' http://uxwjzm.natappfree.cc/del').then(result => {
+                        console.log(result)
+                    })
+                    this.get()
+                },
+                delq(id) {
+                    axios.delete('/del_one', {
+                        params: {
+                            id: id
+                        }
+                    }).then(result => {
+                        console.log(result)
+                    })
+                    this.get();
+                }
+
+            },
+            mounted: function() {
+                this.a()
+                this.dis()
+                this.get()
+
+            },
+            components: {
+                'my-item': head
+            }
+        })
+    </script>
+
+</body>
+
+</html>

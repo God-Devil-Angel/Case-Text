@@ -1,0 +1,178 @@
+@media screen and (min-width: 1280px) {
+    .container {
+        width: 1280px;
+    }
+} 
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.nav a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+}
+
+@media screen and ( max-width: 969px) {
+    .nav li {
+        float: left;
+        width: 20%;
+    }
+    article {
+        margin-top: 12px;
+    }
+}
+
+@media screen and ( max-width: 767px) {
+    .nav li a {
+        font-size: 14px;
+        padding: 0;
+    }
+    .news li:nth-child(1) {
+        width: 100%!important;
+        margin-bottom: 15px;
+    }
+    .news li {
+        width: 50%!important;
+    }
+    .publish h3 {
+        font-size: 13px;
+    }
+}
+
+.nav a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+header {
+    padding-left: 0!important;
+}
+
+.log {
+    background: #429ad9;
+}
+
+.log img {
+    display: block;
+    /* width: 100%; */
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
+/* 进入超小屏幕 */
+
+.log span {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+
+.nav {
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav a::before {
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.news li {
+    float: left;
+    width: 25%;
+    height: 128px;
+    padding-left: 10px;
+}
+
+.news li:nth-child(1) {
+    width: 50%;
+    height: 266px;
+    padding-left: 0;
+}
+
+.news li:nth-child(1) p {
+    line-height: 41px;
+    font-size: 25px;
+    padding: 0 10px;
+}
+
+.news li:nth-child(2),
+.news li:nth-child(3) {
+    margin-bottom: 10px;
+}
+
+.news a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.news a img {
+    width: 100%;
+    height: 100%;
+}
+
+.news a p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 41px;
+    padding: 5px 10px;
+    margin-bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    font-size: 12px;
+    color: #fff;
+}
+
+.publish {
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.publish .row {
+    border-bottom: 1px solid #ccc;
+}
+
+.publish .row img {
+    width: 100%;
+    padding-top: 10px;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.hot {
+    display: block;
+    margin-top: 10px;
+    padding: 0 20px 20px 20px;
+    border: 1px solid #ccc;
+}
+
+aside a {
+    display: block;
+}
+
+.hot p {
+    font-size: 12px;
+}

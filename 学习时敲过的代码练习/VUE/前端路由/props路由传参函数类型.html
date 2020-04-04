@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../JS/vue.js'></script>
+    <script src='../JS/vue-router_3.0.2.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to='/user/1'>用户1</router-link>
+        <router-link to='/user/2'>用户2</router-link>
+        <router-link to='/user/3'>用户3</router-link>
+        <router-link to='/resgit'>登录</router-link>
+
+        <!-- //路由占位符 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        var User = {
+            props: ['id', 'uname', 'age'],
+            template: `<h1>id:{{id}}uname:{{uname}}age:{{age}}</h1>`
+        }
+        var resgit = {
+            template: `<h1>这是啥我也不知道</h1>`
+        }
+        var rt = new VueRouter({
+            //路由规则数组
+            routes: [{
+                path: '/user/:id',
+                component: User,
+                props: function(router) {
+                    return {
+                        id: router.params.id,
+                        uname: 'zs',
+                        age: 20
+                    }
+
+                }
+
+
+
+
+
+            }, {
+                path: '/resgit',
+                component: resgit
+            }]
+        })
+        var vm = new Vue({
+            el: '#app',
+            router: rt
+        })
+    </script>
+</body>
+
+</html>

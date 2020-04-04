@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class='box' v-cloak>
+        <div @click='vice'>
+            <div @click.stop='vice2'>addd</div>
+        </div>
+    </div>
+    <a href="http://www.baidu.com" @click.prevent>dddd</a>
+    <script type='text/javascript'>
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                msg: 666
+            },
+            methods: {
+                vice: function() {
+                    alert('maole');
+                },
+                vice2: function() {
+                    alert('zhengchang');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

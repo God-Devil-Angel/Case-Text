@@ -1,0 +1,5 @@
+,
+                deld() {
+                    
+                    console.log('你麻痹')
+                }

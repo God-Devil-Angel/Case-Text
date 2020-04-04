@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="box">
+        <div v-if='score>=90'>优秀</div>
+        <div v-else-if='socre<90&&score>=80'>良好</div>
+        <div v-show='flag'>哈哈哈</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '.box',
+            data: {
+                score: 99,
+                flag: false
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

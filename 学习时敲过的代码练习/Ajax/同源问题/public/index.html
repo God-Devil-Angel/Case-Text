@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='btn'>调教</button>
+    <button id='btn2'>调教</button>
+
+
+
+    <script>
+        // var btn = document.getElementById('btn');
+        // btn.onclick = function() {
+        //     var scr = document.createElement('script');
+        //     scr.src = 'http://localhost:3001/ty'
+        //     document.body.appendChild(scr);
+        //     scr.onload = function() {
+        //         document.body.removeChild(scr);
+        //     }
+        // }
+
+        //封装jsonp
+        var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2');
+        console.log(btn2);
+        btn.onclick = function() {
+
+            jsonp({
+                url: 'http://localhost:3001/ty',
+                success: function(result) {
+                    console.log('123');
+                    console.log(result);
+
+                }
+
+
+
+            });
+        }
+        btn2.onclick = function() {
+            jsonp({
+                url: 'http://localhost:3001/ty',
+
+                success: function(result) {
+                    console.log('456');
+                    console.log(result);
+
+                }
+            })
+        }
+
+        function jsonp(data) {
+            var perName = 'per' + Math.random().toString().replace('.', '');
+
+            window[perName] = data.success;
+            var script = document.createElement('script');
+            script.src = data.url + '?callback=' + perName;
+            document.body.appendChild(script);
+            script.onload = function() {
+                document.body.removeChild(script);
+            }
+        }
+    </script>
+    <!-- <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://localhost:3001/ty');
+        xhr.send();
+        xhr.onload = function() {
+            console.log(xhr.responseText);
+        }
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .box,
+        .box1 {
+            width: 80%;
+            margin: 150px auto;
+        }
+        
+        .box input,
+        .box1 input {
+            width: 100%;
+            height: 50px;
+            border: 2px solid skyblue;
+            padding: 0 15px;
+            outline: none;
+        }
+        
+        .box p {
+            margin-top: 20px;
+            margin-left: 73%;
+            font-size: 24px;
+        }
+        
+        .err {
+            color: red;
+        }
+        
+        .true {
+            color: plum;
+        }
+        
+        .box em,
+        .box1 em {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <em>验证邮箱</em>
+        <input type="email" placeholder="请输入邮箱">
+        <p></p>
+    </div>
+    <div class="box1">
+        <em>搜索提示</em>
+        <input type="text">
+        <div class="list">123</div>
+    </div>
+    <script>
+        var box = document.getElementsByClassName('box');
+        var inp = box[0].getElementsByTagName('input');
+        var p = box[0].getElementsByTagName('p');
+        var box1 = document.getElementsByClassName('box1');
+        var inp1 = box1[0].getElementsByTagName('input');
+        var list = box1[0].getElementsByClassName('list');
+        var inp01 = inp1[0];
+        var list01 = list[0];
+
+
+
+        //验证邮箱ajax
+        inp[0].onblur = function() {
+            var reg =  /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            var val = inp[0].value;
+            if (reg.test(val)) {
+                //创建ajax对象
+                ajax({
+                    type: 'post',
+                    url: 'http://localhost:2020/email',
+                    sucess: function(data) {
+                        p[0].innerHTML = data;
+                        p[0].className = 'err ';
+                    },
+                    error: function(data) {
+                        p[0].innerHTML = data;
+                        p[0].className = 'true';
+                    },
+                    Data: {
+                        email: val
+
+                    },
+                    ContentType: 'application/json'
+                })
+            } else {
+                if (inp[0].value.trim() == '') {
+                    p[0].innerHTML = '';
+                    return;
+                }
+                p[0].innerHTML = '请输入正确的邮箱';
+                p[0].className = 'err';
+
+            }
+        }
+
+
+
+        //搜索提示ajax
+        var timer = null;
+
+        inp01.oninput = function() {
+
+            clearTimeout(timer);
+            var key = this.value;
+            timer = setTimeout(function() {
+                ajax({
+                    url: 'http://localhost:2020/search ',
+                    sucess: function(data) {
+                        console.log('正确的', data);
+                        if (data.length > 0) {
+                            var html = template('t', {
+                                Data: data
+                            });
+                            list01.innerHTML = html;
+                        }
+
+
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    },
+                    Data: {
+                        message: key
+                    }
+                })
+            }, 1000);
+
+        }
+
+
+
+        //ajax交互函数
+        function ajax(option) {
+            //默认对象
+            var def = {
+                    type: 'get',
+                    url: '',
+                    sucess: function(data, xhr) {},
+                    error: function(err, xhr) {},
+                    Data: {},
+                    ContentType: 'application/x-www-form-urlencoded'
+                }
+                //Object.assign覆盖属性
+            Object.assign(def, option);
+            //创建个拼接get参数的变量
+            var parmas = '';
+            if (def.type == 'get') {
+                for (var att in def.Data) {
+                    parmas += att + '=' + def.Data[att] + '&';
+                }
+                parmas = parmas.substr(0, parmas.length - 1);
+            }
+            //建立ajax对象
+            var xhr = new XMLHttpRequest();
+            //设置ajax
+            xhr.open(def.type, option.url + '?' + parmas);
+
+            //发送请求
+            if (def.type == 'post') {
+                xhr.setRequestHeader('Content-Type', def.ContentType);
+                if (def.ContentType == 'application/json') {
+                    xhr.send(JSON.stringify(def.Data));
+
+                } else {
+                    xhr.send(parmas);
+                }
+
+            } else {
+                xhr.send();
+            }
+            xhr.onload = function() {
+                let res = xhr.responseText
+
+                //getRequestHeader 获取服务器传来的数据类型
+                var contenttype = xhr.getResponseHeader('Content-Type');
+                //为json类型 则将json字符串转化成对象  如果不是 直接输出当前字符串
+                if (contenttype.includes('application/json ')) {
+                    res = JSON.parse(res);
+                }
+
+                //根据http状态码
+                if (xhr.status == 200) {
+                    def.sucess(res);
+                } else {
+                    def.error(res);
+                }
+
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

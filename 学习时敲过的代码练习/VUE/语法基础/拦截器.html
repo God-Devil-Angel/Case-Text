@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/axios.js'></script>
+</head>
+
+<body>
+    <script>
+        axios.defaults.baseURL = 'http://localhost:3000';
+        //请求拦截器
+        axios.interceptors.request.use(function(config) {
+            config.url = config.url + '&age=22'
+            console.log(config);
+            return config;
+        }, function(err) {
+            console.log(err);
+        });
+
+        //响应拦截器
+        axios.interceptors.response.use(function(res) {
+            res.data.name = 'lisi';
+            return res;
+
+        }, function(err) {
+
+        })
+        axios.get('/abc?id=123&name=zhangsan').then(ret => console.log(ret));
+    </script>
+</body>
+
+</html>

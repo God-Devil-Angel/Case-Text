@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='box' v-cloak>
+        {{msg+'lll'+132}}
+        <div v-text='msg'></div>
+        <div v-html='msg1'></div>
+        <div v-pre>{{msg1}}</div>
+        <div v-once>{{info}}</div>
+        <input type="text" v-model='num'> {{num}}
+        <button v-on:click='num++'>点击1</button>
+        <button @click='num--'>点击2</button>
+        <button @click='hadn'>点击3</button>
+        <button @click='hadnn()'>点击3</button>
+        <button @click='clear'>清空</button>
+        <div v-on:mouseover='say'>
+            'I love you '
+        </div>
+        <div @mouseover='say1("hi","你好",$event)'>
+            '时光催人老'
+        </div>
+
+
+    </div>
+    <script src='./JS/vue.js'></script>
+    <script type='text/javascript'>
+        var vu = new Vue({
+            el: '.box',
+            data: {
+                msg: 'hellovue',
+                msg1: '<h1>jihu</h1>',
+                info: 'kk',
+                num: 0
+            },
+            methods: {
+                hadn: function() {
+                    this.num++;
+                },
+                hadnn: function() {
+                    this.num--;
+                },
+                say: function(event) {
+                    console.log(event.target.innerHTML);
+                },
+                say1: function(p1, p2, event) {
+                    console.log(p1, p2);
+                    console.log(event.target.innerHTML);
+                },
+                clear: function() {
+                    this.num = 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

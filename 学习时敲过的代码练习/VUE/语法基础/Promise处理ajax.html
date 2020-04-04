@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <script>
+        function promiseData(url) {
+            var p = new Promise(function(reslove, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState != 4) return;
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        reslove(xhr.responseText);
+                    } else {
+                        reject('服务器出错');
+                    }
+
+                }
+                xhr.open('get', url);
+                xhr.send();
+            })
+            return p;
+        }
+        promiseData('http://localhost:3000/data').then(function(data) {
+            console.log(data);
+            return promiseData('http://localhost:3000/data1')
+        }).then((data) => {
+            console.log(data)
+            return promiseData('http://localhost:3000/data2')
+        }).then((data => console.log(data)))
+    </script>
+</body>
+
+</html>

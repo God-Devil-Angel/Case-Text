@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a,
+        .b {
+            float: left;
+            height: 100px;
+            width: 100px;
+            border: 1px solid red;
+            border-collapse: collapse;
+            border-radius: 50px;
+        }
+        .b {
+            border: 1px dashed blue;
+        }
+        .c {
+            height: 100px;
+            width: 100px;
+            border: 1px solid red;
+            border-collapse: collapse;
+        }
+        　.clearfix::before {
+            content: " ";
+            display: block;
+        }
+        .clearfix::before {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="a clearfix"></div>
+    <div class="b clearfix"></div>
+    <div class="c"></div>
+</body>
+</html>

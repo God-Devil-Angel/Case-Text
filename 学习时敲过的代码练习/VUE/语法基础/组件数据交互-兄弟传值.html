@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="box">
+        <button v-on:click='milk'>事件销毁</button>
+        <tom-test></tom-test>
+        <jreey-test></jreey-test>
+    </div>
+    <script>
+        //创建事件中心
+        var hub = new Vue();
+
+        //tom 组件
+        Vue.component('tom-test', {
+                data: function() {
+                    return {
+                        num: 0
+                    }
+                },
+                template: `
+                <div>
+                    <div>Tom:{{num}}</div>
+                    <button v-on:click="handle">回手掏</button>    
+                </div>
+            `,
+                methods: {
+                    handle: function() {
+                        hub.$emit('jreey-fun', 2)
+                    }
+
+                },
+                mounted: function() {
+                    hub.$on('tom-fun', (val, val1) => {
+                        this.num += val1;
+                    })
+                }
+            })
+            //jreey 组件
+        Vue.component('jreey-test', {
+            data: function() {
+                return {
+                    num: 0
+                }
+            },
+            template: `
+                <div>
+                    <div>Jreey:{{num}}</div>  
+                    <button v-on:click='handle'>回手掏</button>     
+                </div>
+            `,
+            methods: {
+                handle: function() {
+                    hub.$emit('tom-fun', 1, 5);
+                }
+            },
+            mounted: function() {
+                hub.$on('jreey-fun', (val) => {
+                    this.num += val;
+                })
+
+            }
+        })
+
+        var vm = new Vue({
+            el: '.box',
+            data: {
+
+            },
+            methods: {
+                milk: function() {
+                    hub.$off('tom-fun');
+                    hub.$off('jreey-fun');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

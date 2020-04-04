@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../JS/vue.js'></script>
+    <script src='../JS/vue-router_3.0.2.js'></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to='/user'>用户</router-link>
+        <router-link to='/resgit'>登录</router-link>
+
+        <!-- //路由占位符 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        var User = {
+            template: `<h1>用户好不好，你说的硫酸</h1>`
+        }
+        var resgit = {
+            template: `<div>
+            <h1>登录组件路由</h1>
+            <hr>
+
+            <router-link to='/resgit/tap1'>tap1</router-link>
+            <router-link to='/resgit/tap2'>tap2<?router-link>
+
+            <router-view></router-view>
+            
+            
+            </div>`
+        }
+        var tap1 = {
+            template: `<h3>tap1内同</h3>`
+        }
+        var tap2 = {
+            template: `<h3>tap2内同</h3>`
+        }
+        var rt = new VueRouter({
+            //路由规则数组
+            routes: [{
+                path: '/',
+                redirect: '/user'
+            }, {
+                path: '/user',
+                component: User
+            }, {
+                path: '/resgit',
+                component: resgit,
+                children: [{
+                    path: '/resgit/tap1',
+                    component: tap1
+                }, {
+                    path: '/resgit/tap2',
+                    component: tap2
+                }]
+            }]
+        })
+        var vm = new Vue({
+            el: '#app',
+            router: rt
+        })
+    </script>
+
+</body>
+
+</html>

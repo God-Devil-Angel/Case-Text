@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='JS/vue.js'></script>
+</head>
+
+<body>
+    <div class="app">
+        <concent-nihao></concent-nihao>
+        <concent-wohao></concent-wohao>
+    </div>
+    <script>
+        var niHao = {
+            data: function() {
+                return {
+                    msg: 'NiHao'
+                }
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        var woHao = {
+            data: function() {
+                return {
+                    msg: '我好'
+                }
+
+            },
+            template: '<div>{{msg}}</div>'
+        }
+        var vm = new Vue({
+            el: '.app',
+            data: {},
+            components: {
+                'concent-nihao': niHao,
+                'concent-wohao': woHao
+            }
+        })
+    </script>
+</body>
+
+</html>

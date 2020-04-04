@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- //引入模板引擎 -->
+    <script src='./JS/template-web.js'></script>
+</head>
+
+<body>
+
+    <div class='ad'></div>
+    <!-- //建立第一个模板引擎 -->
+    <script type='text/html' id='tp1'>
+        <ul>
+            <li>{{name}}</li>
+            <li>{{age}}</li>
+            <li>{{sex}}</li>
+        </ul>
+    </script>
+
+    <!-- //告诉模板引擎与什么数据拼接 -->
+    <script>
+        var html = template('tp1', {
+            name: '张三',
+            age: 25,
+            sex: '男'
+        });
+
+        document.getElementsByClassName('ad')[0].innerHTML = html;
+    </script>
+
+</body>
+
+</html>

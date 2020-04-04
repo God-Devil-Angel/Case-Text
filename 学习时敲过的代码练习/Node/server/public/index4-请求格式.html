@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type='text/javascript'>
+        var xhr = new XMLHttpRequest();
+        //创建请求方式 
+        xhr.open('post', 'http://localhost:3000/json');
+        //请求参数的格式类型
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        //发送,只能使用json字符串形式
+        xhr.send(JSON.stringify({
+            name: 'gg',
+            age: 22
+        }));
+        //接收服务器响应
+        xhr.onload = function() {
+            console.log(xhr.responseText);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>发送</button>
+    <script src='JS/jQuery.js'></script>
+    <script>
+        $('button').on('click', function() {
+            console.log('111');
+            $.ajax({
+                type: 'post',
+                url: '/base',
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr) {
+                    console.log(xhr);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    1
+    <script>
+        function ajax(option) {
+            //创建ajax对象
+            var xhr = new XMLHttpRequest();
+            //配置ajax
+            xhr.open(option.type, option.url);
+            //发送请求
+            xhr.send();
+            //监听响应
+            xhr.onload = function() {
+                option.sucess(xhr.responseText);
+            }
+
+        }
+        ajax({
+            type: 'get',
+            url: 'http://localhost:3000/first',
+            sucess: function(data) {
+                console.log(data);
+            }
+        })
+    </script>
+</body>
+
+</html>
